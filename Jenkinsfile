@@ -46,13 +46,13 @@ pipeline {
                     }
                     
                     echo "Cleaning the app folder"
-                    cmd "del \"C:\\inetpub\\wwwroot\\jenkins-sample-web-app\\**\" /S /Q"
+                    bat "del \"C:\\inetpub\\wwwroot\\jenkins-sample-web-app\\**\" /S /Q"
                     
                     echo "Copying the published files to the app folder"
-                    cmd "xcopy \"${WORKSPACE}\\publish\\**\" \"C:/inetpub/wwwroot/jenkins-sample-web-app\" /E /Q"
+                    bat "xcopy \"${WORKSPACE}\\publish\\**\" \"C:/inetpub/wwwroot/jenkins-sample-web-app\" /E /Q"
                     
                     echo "Starting App Pool"
-                    cmd "%systemroot%\\system32\\inetsrv\\appcmd start apppool /apppool.name:DefaultAppPool"
+                    bat "%systemroot%\\system32\\inetsrv\\appcmd start apppool /apppool.name:DefaultAppPool"
                 }
             }
         }
